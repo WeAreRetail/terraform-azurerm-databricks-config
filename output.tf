@@ -1,11 +1,34 @@
-output "security_scope" {
-  value       = databricks_secret_scope.security.name
-  description = "Databricks security scope name."
+output "analyst_group_name" {
+  value = databricks_group.analysts.display_name
 }
 
 output "databricks_group_analysts" {
   value       = databricks_group.analysts
   description = "Databricks Analysts group."
+}
+
+output "group_read_name" {
+  value = databricks_group.readonly
+}
+
+output "pool_databricks_runtime" {
+  value       = local.pool_to_enable["DATABRICKS_VERSION"]
+  description = "The pools' Databricks runtime version."
+}
+
+output "pool_spot_id" {
+  value       = module.pools.pool_spot_id
+  description = "The warm pool id"
+}
+
+output "pool_warm_id" {
+  value       = module.pools.pool_warm_id
+  description = "The spot pool id"
+}
+
+output "security_scope" {
+  value       = databricks_secret_scope.security.name
+  description = "Databricks security scope name."
 }
 
 output "spn_id_value" {
@@ -18,10 +41,7 @@ output "spn_secret_key" {
   description = "SPN Secret key."
 }
 
-output "analyst_group_name" {
-  value = databricks_group.analysts.display_name
-}
-
-output "read_group_name" {
-  value = databricks_group.readonly
+output "policy_ids" {
+  value       = local.policy_id_map
+  description = "List of the policy IDs that have been created."
 }
