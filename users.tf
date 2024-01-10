@@ -6,7 +6,7 @@ data "databricks_group" "admins" {
 }
 
 data "azuread_group" "admin" {
-  display_name     = var.group_admin
+  display_name     = var.admin_group
   security_enabled = true
 }
 
@@ -40,7 +40,7 @@ resource "databricks_group" "analysts" {
 }
 
 data "azuread_group" "user" {
-  display_name     = var.group_user
+  display_name     = var.user_group
   security_enabled = true
 }
 
@@ -75,7 +75,7 @@ resource "databricks_group" "readonly" {
 }
 
 data "azuread_group" "readonly" {
-  display_name     = var.group_read
+  display_name     = var.read_group
   security_enabled = true
 }
 
@@ -121,7 +121,7 @@ resource "databricks_user" "all_users" {
 ##################################
 
 data "azuread_group" "app" {
-  display_name     = var.group_admin
+  display_name     = var.admin_group
   security_enabled = true
 }
 
