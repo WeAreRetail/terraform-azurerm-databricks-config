@@ -69,6 +69,7 @@ module "databricks_config" {
 | <a name="input_key_vault_id"></a> [key\_vault\_id](#input\_key\_vault\_id) | n/a | `string` | n/a | yes |
 | <a name="input_read_group"></a> [read\_group](#input\_read\_group) | Read only users user group (with no groups inside). | `string` | n/a | yes |
 | <a name="input_user_group"></a> [user\_group](#input\_user\_group) | Developpers user group (with no groups inside). | `string` | n/a | yes |
+| <a name="input_allow_pat_config"></a> [allow\_pat\_config](#input\_allow\_pat\_config) | Whether or not to allow the usage of PATs to configure databricks | `bool` | `false` | no |
 | <a name="input_logs_path"></a> [logs\_path](#input\_logs\_path) | The clusters logs root folder. | `string` | `""` | no |
 | <a name="input_policy_overrides"></a> [policy\_overrides](#input\_policy\_overrides) | Cluster policy overrides | `map` | `{}` | no |
 | <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | Tenand ID. | `string` | `"8ca5b849-53e1-48cf-89fb-0103886af200"` | no |

@@ -3,6 +3,11 @@ variable "admin_group" {
   description = "Administrators user group (with no groups inside)."
 }
 
+variable "allow_pat_config" {
+  type        = bool
+  description = "Whether or not to allow the usage of PATs to configure databricks"
+  default     = false
+}
 variable "user_group" {
   type        = string
   description = "Developpers user group (with no groups inside)."
