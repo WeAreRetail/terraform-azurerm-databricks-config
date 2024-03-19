@@ -26,7 +26,7 @@ locals {
     },
     "spark_version" : {
       "type" : "allowlist",
-      "values" : ["12.2.x-scala2.12", "13.3.x-scala2.12"]
+      "values" : ["12.2.x-scala2.12", "13.3.x-scala2.12", "14.3.x-scala2.12"]
       "hidden" : false
     },
     "docker_image.url" : {
