@@ -44,9 +44,13 @@ locals {
       "hidden" : false
     },
     "azure_attributes.availability" : {
-      "type" : "fixed",
-      "value" : "SPOT_WITH_FALLBACK_AZURE",
-      "hidden" : false
+      "hidden" : false,
+      "type" : "allowlist",
+      "values" : [
+        "SPOT_AZURE",
+        "ON_DEMAND_AZURE",
+        "SPOT_WITH_FALLBACK_AZURE"
+      ]
     },
     "autoscale.min_workers" : {
       "type" : "unlimited",
