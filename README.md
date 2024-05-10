@@ -37,8 +37,10 @@ module "databricks_config" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_admin_group"></a> [admin\_group](#input\_admin\_group) | Administrators user group (with no groups inside). | `string` | n/a | yes |
+| <a name="input_environment"></a> [environment](#input\_environment) | The infrastructure environment. | `string` | n/a | yes |
 | <a name="input_key_vault_id"></a> [key\_vault\_id](#input\_key\_vault\_id) | n/a | `string` | n/a | yes |
 | <a name="input_read_group"></a> [read\_group](#input\_read\_group) | Read only users user group (with no groups inside). | `string` | n/a | yes |
+| <a name="input_trigram"></a> [trigram](#input\_trigram) | The project trigram. | `string` | n/a | yes |
 | <a name="input_user_group"></a> [user\_group](#input\_user\_group) | Developpers user group (with no groups inside). | `string` | n/a | yes |
 | <a name="input_allow_pat_config"></a> [allow\_pat\_config](#input\_allow\_pat\_config) | Whether or not to allow the usage of PATs to configure databricks | `bool` | `false` | no |
 | <a name="input_logs_path"></a> [logs\_path](#input\_logs\_path) | The clusters logs root folder. | `string` | `""` | no |
