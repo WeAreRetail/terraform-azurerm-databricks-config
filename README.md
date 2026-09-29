@@ -27,34 +27,43 @@ module "databricks_config" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_azurecaf"></a> [azurecaf](#requirement\_azurecaf) | >= 1.2.16 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3.0.2 |
-| <a name="requirement_databricks"></a> [databricks](#requirement\_databricks) | >= 1.0.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0 |
+| <a name="requirement_azuread"></a> [azuread](#requirement\_azuread) | >= 2.35.0 |
+| <a name="requirement_azurecaf"></a> [azurecaf](#requirement\_azurecaf) | >= 1.2.25 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3.66.0 |
+| <a name="requirement_databricks"></a> [databricks](#requirement\_databricks) | >= 1.21.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.5.1 |
 
 #### Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_admin_group"></a> [admin\_group](#input\_admin\_group) | Administrators user group (with no groups inside). | `string` | n/a | yes |
+| <a name="input_acr_url"></a> [acr\_url](#input\_acr\_url) | The Azure Container Registry and repository holding this project's images. | `string` | n/a | yes |
+| <a name="input_default_catalog"></a> [default\_catalog](#input\_default\_catalog) | The default Unity Catalog for the Databricks workspace. MUST BE SET BEFORE DISABLE HIVE | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | The infrastructure environment. | `string` | n/a | yes |
-| <a name="input_key_vault_id"></a> [key\_vault\_id](#input\_key\_vault\_id) | n/a | `string` | n/a | yes |
-| <a name="input_read_group"></a> [read\_group](#input\_read\_group) | Read only users user group (with no groups inside). | `string` | n/a | yes |
+| <a name="input_key_vault_id"></a> [key\_vault\_id](#input\_key\_vault\_id) | The key vault id. | `string` | n/a | yes |
 | <a name="input_trigram"></a> [trigram](#input\_trigram) | The project trigram. | `string` | n/a | yes |
-| <a name="input_user_group"></a> [user\_group](#input\_user\_group) | Developpers user group (with no groups inside). | `string` | n/a | yes |
-| <a name="input_allow_pat_config"></a> [allow\_pat\_config](#input\_allow\_pat\_config) | Whether or not to allow the usage of PATs to configure databricks | `bool` | `false` | no |
-| <a name="input_logs_path"></a> [logs\_path](#input\_logs\_path) | The clusters logs root folder. | `string` | `""` | no |
-| <a name="input_policy_overrides"></a> [policy\_overrides](#input\_policy\_overrides) | Cluster policy overrides | `map` | `{}` | no |
-| <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | Tenand ID. | `string` | `"8ca5b849-53e1-48cf-89fb-0103886af200"` | no |
+| <a name="input_additional_allowed_instance_pool_ids"></a> [additional\_allowed\_instance\_pool\_ids](#input\_additional\_allowed\_instance\_pool\_ids) | Extra instance pool IDs allowed by the job cluster policy, on top of this module's own pools. | <pre>object({<br/>    driver    = list(string)<br/>    all_nodes = list(string)<br/>  })</pre> | `null` | no |
+| <a name="input_current_databricks_major_version"></a> [current\_databricks\_major\_version](#input\_current\_databricks\_major\_version) | The Databricks runtime major version (e.g. "17") used to select the "current" cluster policies. | `string` | `"17"` | no |
+| <a name="input_data_scope"></a> [data\_scope](#input\_data\_scope) | The data scope of the Databricks workspace. It is used to determine the permissions. | `string` | `"NONE"` | no |
+| <a name="input_disable_legacy_dbfs"></a> [disable\_legacy\_dbfs](#input\_disable\_legacy\_dbfs) | Indicates if the legacy DBFS should be disabled. | `bool` | `true` | no |
+| <a name="input_disable_legacy_hive_metastore"></a> [disable\_legacy\_hive\_metastore](#input\_disable\_legacy\_hive\_metastore) | Indicates if the legacy Hive metastore should be disabled. | `bool` | `true` | no |
+| <a name="input_disaster_recovery"></a> [disaster\_recovery](#input\_disaster\_recovery) | disaster recovery infrastructure? | `bool` | `false` | no |
+| <a name="input_enable_flyway_warehouse"></a> [enable\_flyway\_warehouse](#input\_enable\_flyway\_warehouse) | Create a dedicated sql warehouse for running flyway migrations | `bool` | `false` | no |
+| <a name="input_supported_databricks_major_versions"></a> [supported\_databricks\_major\_versions](#input\_supported\_databricks\_major\_versions) | The list of supported Databricks runtime major versions. | `list(string)` | <pre>[<br/>  "15",<br/>  "17",<br/>  "18"<br/>]</pre> | no |
+| <a name="input_telemetry_connection_string"></a> [telemetry\_connection\_string](#input\_telemetry\_connection\_string) | The connection string to the telemetry. | `string` | `"telemetry_not_set"` | no |
+| <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | Tenant ID. | `string` | `"8ca5b849-53e1-48cf-89fb-0103886af200"` | no |
+| <a name="input_user_and_jobs_are_unrestricted"></a> [user\_and\_jobs\_are\_unrestricted](#input\_user\_and\_jobs\_are\_unrestricted) | Indicates if users and jobs are unrestricted. | `bool` | `false` | no |
+| <a name="input_workspace_id"></a> [workspace\_id](#input\_workspace\_id) | The Databricks workspace Azure ID. | `string` | `"empty"` | no |
+| <a name="input_workspace_url"></a> [workspace\_url](#input\_workspace\_url) | The Databricks workspace URL. | `string` | `"empty"` | no |
 
 #### Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_analyst_group_name"></a> [analyst\_group\_name](#output\_analyst\_group\_name) | n/a |
-| <a name="output_databricks_group_analysts"></a> [databricks\_group\_analysts](#output\_databricks\_group\_analysts) | Databricks Analysts group. |
-| <a name="output_read_group_name"></a> [read\_group\_name](#output\_read\_group\_name) | n/a |
-| <a name="output_security_scope"></a> [security\_scope](#output\_security\_scope) | Databricks security scope name. |
-| <a name="output_spn_id_value"></a> [spn\_id\_value](#output\_spn\_id\_value) | SPN ID value |
-| <a name="output_spn_secret_key"></a> [spn\_secret\_key](#output\_spn\_secret\_key) | SPN Secret key. |
+| <a name="output_flyway_sql_warehouse_jdbc_url"></a> [flyway\_sql\_warehouse\_jdbc\_url](#output\_flyway\_sql\_warehouse\_jdbc\_url) | The JDBC URL for the Flyway SQL warehouse. |
+| <a name="output_flyway_sql_warehouse_odbc_params"></a> [flyway\_sql\_warehouse\_odbc\_params](#output\_flyway\_sql\_warehouse\_odbc\_params) | The ODBC connection parameters for the Flyway SQL warehouse. |
+| <a name="output_job_policy_id"></a> [job\_policy\_id](#output\_job\_policy\_id) | The current job cluster policy ID. |
+| <a name="output_notebook_policy_id"></a> [notebook\_policy\_id](#output\_notebook\_policy\_id) | The current notebook cluster policy ID. |
+| <a name="output_users_group_id"></a> [users\_group\_id](#output\_users\_group\_id) | The Databricks group ID for the workspace users group. |
 <!-- END_TF_DOCS -->

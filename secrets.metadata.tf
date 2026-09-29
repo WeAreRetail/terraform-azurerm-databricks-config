@@ -7,8 +7,8 @@ resource "databricks_secret_scope" "metadata" {
   name = "metadata"
 }
 
-resource "databricks_secret_acl" "metadata" {
-  principal  = databricks_group.analysts.display_name
+resource "databricks_secret_acl" "metadata_unity" {
+  principal  = "users"
   permission = "READ"
   scope      = databricks_secret_scope.metadata.name
 }
@@ -18,21 +18,13 @@ resource "databricks_secret_acl" "metadata" {
 # The execution environment.
 resource "databricks_secret" "environment" {
   key          = "ENVIRONMENT"
-  string_value = var.environment
+  string_value = upper(var.environment)
   scope        = databricks_secret_scope.metadata.name
-
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 # The project trigram.
 resource "databricks_secret" "trigram" {
   key          = "TRIGRAM"
-  string_value = var.trigram
+  string_value = upper(var.trigram)
   scope        = databricks_secret_scope.metadata.name
-
-  lifecycle {
-    create_before_destroy = true
-  }
 }
