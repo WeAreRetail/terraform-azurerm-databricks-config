@@ -36,6 +36,16 @@ locals {
     "17" = local.policy_notebook_17
     "15" = local.policy_notebook_15
   }
+
+  # values shared by the current job and notebook policies; one() fails the plan if they diverge
+  current_policy_spark_version = one(distinct([
+    local.policy_job_by_version[var.current_databricks_major_version]["spark_version"].value,
+    local.policy_notebook_by_version[var.current_databricks_major_version]["spark_version"].value,
+  ]))
+  current_policy_docker_image_url = one(distinct([
+    local.policy_job_by_version[var.current_databricks_major_version]["docker_image.url"].value,
+    local.policy_notebook_by_version[var.current_databricks_major_version]["docker_image.url"].value,
+  ]))
 }
 
 locals {

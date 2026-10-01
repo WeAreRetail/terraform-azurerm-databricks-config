@@ -61,9 +61,11 @@ module "databricks_config" {
 
 | Name | Description |
 |------|-------------|
+| <a name="output_current_job_policy_id"></a> [current\_job\_policy\_id](#output\_current\_job\_policy\_id) | The current job cluster policy ID. |
+| <a name="output_current_notebook_policy_id"></a> [current\_notebook\_policy\_id](#output\_current\_notebook\_policy\_id) | The current notebook cluster policy ID. |
+| <a name="output_current_policy_docker_image_url"></a> [current\_policy\_docker\_image\_url](#output\_current\_policy\_docker\_image\_url) | The docker image URL fixed by the current job and notebook cluster policies. |
+| <a name="output_current_policy_spark_version"></a> [current\_policy\_spark\_version](#output\_current\_policy\_spark\_version) | The Databricks runtime (spark\_version) fixed by the current job and notebook cluster policies. |
 | <a name="output_flyway_sql_warehouse_jdbc_url"></a> [flyway\_sql\_warehouse\_jdbc\_url](#output\_flyway\_sql\_warehouse\_jdbc\_url) | The JDBC URL for the Flyway SQL warehouse. |
 | <a name="output_flyway_sql_warehouse_odbc_params"></a> [flyway\_sql\_warehouse\_odbc\_params](#output\_flyway\_sql\_warehouse\_odbc\_params) | The ODBC connection parameters for the Flyway SQL warehouse. |
-| <a name="output_job_policy_id"></a> [job\_policy\_id](#output\_job\_policy\_id) | The current job cluster policy ID. |
-| <a name="output_notebook_policy_id"></a> [notebook\_policy\_id](#output\_notebook\_policy\_id) | The current notebook cluster policy ID. |
 | <a name="output_users_group_id"></a> [users\_group\_id](#output\_users\_group\_id) | The Databricks group ID for the workspace users group. |
 <!-- END_TF_DOCS -->
