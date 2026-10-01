@@ -37,15 +37,18 @@ locals {
     "15" = local.policy_notebook_15
   }
 
-  # values shared by the current job and notebook policies; one() fails the plan if they diverge
-  current_policy_spark_version = one(distinct([
-    local.policy_job_by_version[var.current_databricks_major_version]["spark_version"].value,
-    local.policy_notebook_by_version[var.current_databricks_major_version]["spark_version"].value,
-  ]))
-  current_policy_docker_image_url = one(distinct([
-    local.policy_job_by_version[var.current_databricks_major_version]["docker_image.url"].value,
-    local.policy_notebook_by_version[var.current_databricks_major_version]["docker_image.url"].value,
-  ]))
+  # per major version overrides, shared by the job and the notebook policies of that version
+  policy_overrides_by_version = {
+    "18" = local.policy_overrides_18
+    "17" = local.policy_overrides_17
+    "15" = local.policy_overrides_15
+  }
+
+  # Read from the version overrides, not from the merged policies: the merged job policies depend on
+  # var.additional_allowed_instance_pool_ids, and these outputs feed the pools given back in that variable
+  # (instance pools preloading the policy runtime and image): reading the merged policies would be a cycle.
+  current_policy_spark_version    = local.policy_overrides_by_version[var.current_databricks_major_version]["spark_version"].value
+  current_policy_docker_image_url = local.policy_overrides_by_version[var.current_databricks_major_version]["docker_image.url"].value
 }
 
 locals {

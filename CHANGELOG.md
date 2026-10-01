@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.1] - 2026-10-01
+
+### Fixed
+
+- `current_policy_spark_version` and `current_policy_docker_image_url` no longer depend on `additional_allowed_instance_pool_ids`: instance pools built from these outputs can now be given back as allowed pools (pool mode of the job policy) without a dependency cycle
+
 ## [4.1.0] - 2026-10-01
 
 ### Added
