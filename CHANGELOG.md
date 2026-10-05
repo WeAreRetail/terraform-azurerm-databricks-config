@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.2.0] - 2026-10-05
+
+### Added
+
+- `spark_env_vars.APPLICATIONINSIGHTS_CONTROLPLANE_DISABLED = "true"` fixed in every job and notebook policy (runtimes 15, 17 and 18). It turns off the OneSettings control plane of the Python Azure Monitor exporter (`azure-monitor-opentelemetry-exporter`, pulled in by `azure-monitor-opentelemetry`). That control plane periodically calls `https://settings.sdk.monitor.azure.com` to fetch the SDK's remote feature settings (SDK stats, live metrics, local storage); the call is blocked by the corporate firewall and crashed the applications. With the variable set the exporter uses its built-in defaults instead. Telemetry is unchanged: it still goes to the `IngestionEndpoint` and `LiveEndpoint` of the Application Insights connection string
+
 ## [4.1.1] - 2026-10-01
 
 ### Fixed

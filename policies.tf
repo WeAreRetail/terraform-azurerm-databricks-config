@@ -111,6 +111,13 @@ locals {
       "value" : "C.UTF-8",
       "hidden" : false
     },
+    # azure-monitor-opentelemetry-exporter polls settings.sdk.monitor.azure.com (OneSettings), blocked by the corporate
+    # firewall. Telemetry still goes to the connection string's IngestionEndpoint / LiveEndpoint.
+    "spark_env_vars.APPLICATIONINSIGHTS_CONTROLPLANE_DISABLED" : {
+      "type" : "fixed",
+      "value" : "true",
+      "hidden" : false
+    },
     "spark_conf.spark.databricks.unityCatalog.volumes.enabled" : {
       "type" : "fixed",
       "value" : "true",
