@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0] - 2026-10-12
+
+### Changed
+
+- **Breaking**: new DCS image naming convention `<acr_url>/databricks-<access mode>-<contract>:<tag>`. The access mode (`dedicated` or `standard`) and the contract are in the repository name, the tag only carries the release: the build version (pushed by the CI) or the environment (`dev`, `int`, `prd`...) the build is released on. The `-current` suffix is dropped
+  - the contract is the DBR major in dedicated mode, and the [serverless environment version](https://docs.databricks.com/aws/en/release-notes/serverless/environment-version/) in standard mode (Python and Databricks Connect version), so the same runtime can one day have both a dedicated and a standard image side by side
+  - runtime 15: `databricks15:<env>-current` → `databricks-dedicated-15:<env>`
+  - runtime 17: `databricks17:<env>-current` → `databricks-dedicated-17:<env>`
+  - runtime 18: `databricks:<env>-v5-standard-current` → `databricks-standard-v5:<env>` (environment version 5, Databricks Connect 18)
+- Migration: build, push and release the images under the new repository names and tags before applying this version, the policies and the pools reference them
+
 ## [4.2.0] - 2026-10-05
 
 ### Added

@@ -38,6 +38,8 @@ locals {
   }
 
   # per major version overrides, shared by the job and the notebook policies of that version
+  # Image naming: <acr_url>/databricks-<access mode>-<contract>:<environment>, the contract being the DBR major in
+  # dedicated mode (15, 17) and the serverless environment version in standard mode (v5 = Databricks Connect 18)
   policy_overrides_by_version = {
     "18" = local.policy_overrides_18
     "17" = local.policy_overrides_17

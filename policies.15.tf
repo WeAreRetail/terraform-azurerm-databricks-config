@@ -72,7 +72,7 @@ locals {
     "docker_image.url" = {
       hidden = false
       type   = "fixed"
-      value  = "${var.acr_url}/databricks15:${lower(var.environment)}-current"
+      value  = "${var.acr_url}/databricks-dedicated-15:${lower(var.environment)}"
     }
   }
 }
