@@ -98,7 +98,7 @@ locals {
   default_restricted_policy = {
     dbus_per_hour = {
       type     = "range"
-      maxValue = 10
+      maxValue = 20
     }
   }
 

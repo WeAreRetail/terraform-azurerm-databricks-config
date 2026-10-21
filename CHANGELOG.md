@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.1.0] - 2026-10-21
+
+### Changed
+
+- `dbus_per_hour` limit of the restricted job and notebook policies (runtimes 15, 17 and 18, applied when `user_and_jobs_are_unrestricted` is `false`) raised from 10 to 20 DBU per hour, allowing larger clusters
+
 ## [5.0.0] - 2026-10-12
 
 ### Changed
