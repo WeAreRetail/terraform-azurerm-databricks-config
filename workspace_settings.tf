@@ -14,7 +14,7 @@ resource "databricks_workspace_conf" "workspace_conf" {
     "enableTokensConfig"                        = false
     "enableDeprecatedGlobalInitScripts"         = false
     "enableDeprecatedClusterNamedInitScripts"   = false
-    "enableResultsDownloading"                  = false
+    "enableResultsDownloading"                  = !var.user_and_jobs_are_unrestricted # Download allowed on restricted workspaces only
     "enableUploadDataUis"                       = false
     "enableNotebookTableClipboard"              = false
     "enforceUserIsolation"                      = true

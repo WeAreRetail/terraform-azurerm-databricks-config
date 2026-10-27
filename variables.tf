@@ -42,7 +42,7 @@ variable "environment" {
 
 variable "user_and_jobs_are_unrestricted" {
   type        = bool
-  description = "Indicates if users and jobs are unrestricted."
+  description = "Indicates if users and jobs are unrestricted. When false (restricted), the cluster policies are capped in DBU per hour and notebook results download is enabled."
   default     = false
 }
 
