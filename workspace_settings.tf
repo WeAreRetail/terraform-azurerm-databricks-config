@@ -16,7 +16,7 @@ resource "databricks_workspace_conf" "workspace_conf" {
     "enableDeprecatedClusterNamedInitScripts"   = false
     "enableResultsDownloading"                  = !var.user_and_jobs_are_unrestricted # Download allowed on restricted workspaces only
     "enableUploadDataUis"                       = false
-    "enableNotebookTableClipboard"              = false
+    "enableNotebookTableClipboard"              = !var.user_and_jobs_are_unrestricted # Copy to clipboard allowed on restricted workspaces only
     "enforceUserIsolation"                      = true
     "mlflowModelServingEndpointCreationEnabled" = false
     "customerApprovedWSLoginExpirationTime"     = "1998-01-01T00:00:00.000Z"

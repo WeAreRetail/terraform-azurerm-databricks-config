@@ -53,7 +53,7 @@ module "databricks_config" {
 | <a name="input_supported_databricks_major_versions"></a> [supported\_databricks\_major\_versions](#input\_supported\_databricks\_major\_versions) | The list of supported Databricks runtime major versions. | `list(string)` | <pre>[<br/>  "15",<br/>  "17",<br/>  "18"<br/>]</pre> | no |
 | <a name="input_telemetry_connection_string"></a> [telemetry\_connection\_string](#input\_telemetry\_connection\_string) | The connection string to the telemetry. | `string` | `"telemetry_not_set"` | no |
 | <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | Tenant ID. | `string` | `"8ca5b849-53e1-48cf-89fb-0103886af200"` | no |
-| <a name="input_user_and_jobs_are_unrestricted"></a> [user\_and\_jobs\_are\_unrestricted](#input\_user\_and\_jobs\_are\_unrestricted) | Indicates if users and jobs are unrestricted. When false (restricted), the cluster policies are capped in DBU per hour and notebook results download is enabled. | `bool` | `false` | no |
+| <a name="input_user_and_jobs_are_unrestricted"></a> [user\_and\_jobs\_are\_unrestricted](#input\_user\_and\_jobs\_are\_unrestricted) | Indicates if users and jobs are unrestricted. When false (restricted), the cluster policies are capped in DBU per hour and notebook results download and table copy to clipboard are enabled. | `bool` | `false` | no |
 | <a name="input_workspace_id"></a> [workspace\_id](#input\_workspace\_id) | The Databricks workspace Azure ID. | `string` | `"empty"` | no |
 | <a name="input_workspace_url"></a> [workspace\_url](#input\_workspace\_url) | The Databricks workspace URL. | `string` | `"empty"` | no |
 
